@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--视觉上模拟光从一侧照射的效果-->
+    <style>
+        div {
+            margin: 100px;
+            width: 200px;
+            height: 200px;
+        }
+
+        span {
+            font-size: 25px;
+        }
+
+        /*深字体，浅背景，更浅的阴影*/
+        .abc {
+            /*hsl 色相，饱和度，亮度 */
+            background-color: hsl( 210, 13%, 60% );
+            color: hsl( 210, 13%, 30% );
+            text-shadow: 0 2px 2px hsla( 0, 50%, 100%, .8 );
+        }
+
+        /*浅字体， 深背景， 更深的阴影*/
+        .def {
+            background-color: hsl( 210, 13%, 40% );
+            color: hsl( 210, 13% ,75% );
+            text-shadow: 0 -2px 2px black;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <span class="abc">the sad a a qptda </span>
+</div>
+
+<div>
+    <span class="def">the sad a a qptda </span>
+</div>
+
+</body>
+</html>

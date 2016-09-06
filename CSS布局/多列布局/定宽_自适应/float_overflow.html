@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .parent {
+            /*overflow: hidden;*/
+        }
+        .left {
+            float: left;
+            margin-right: 20px;
+
+            width: 100px;
+        }
+        .right {
+            /*触发BFC*/
+            overflow: hidden;
+        }
+        /*伪等高，只是padding等高*/
+        .left {
+            background-color: #00AA88;
+            padding-bottom: 9999px;
+
+            margin-bottom: -9999px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="left">left</div>
+        <div class="right">right
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+            <div>dasd</div>
+        </div>
+    </div>
+
+</body>
+</html>

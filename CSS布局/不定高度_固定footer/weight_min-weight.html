@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        html,body {
+            /*伪码：html的min-height: 视口高度;*/
+            /*height： Max（视口高度，内容高度*/
+            height: 100%;
+            /*重置浏览器默认样式*/
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            /*由于父元素的高度是 下限确定，上限不确定， 则min-height认为下限为父元素内容高度*/
+            /* height=[ 视口高度， 内容高度] */
+            min-height: 0;
+            background-color: green;
+            padding-bottom: 60px;/*高度等于footer的高度*/
+            box-sizing: border-box;
+        }
+
+        #footer {
+            position: relative;
+            margin-top: -60px;/*等于footer的高度*/
+            height: 60px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+   <div>Main content</div>
+
+
+</div>
+<div id="footer">Footer </div>
+</body>
+</html>

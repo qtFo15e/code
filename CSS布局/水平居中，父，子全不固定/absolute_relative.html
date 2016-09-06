@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .parent {
+            position: relative;
+        }
+
+        .child {
+            /*触发BFC*/
+            position: absolute;
+            left: 50%;
+        }
+
+        .inner {
+            /*触发BFC*/
+            float: left;
+
+            position: relative;
+            left: -50%;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="child">
+        <div class="inner">dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+    </div>
+</div>
+</body>
+</html>

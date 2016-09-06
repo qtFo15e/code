@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .id {
+            position: relative;
+            top: -250px;
+            left: 50px;
+
+            border: 10px solid rgba(255, 255, 255, 0.5);
+            background-color: white;
+            /*默认值为border-box， 背景色会延伸到边框上，但边框的颜色可以覆盖背景色*/
+            background-clip: padding-box;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 500px;background-color: #2AABD2"></div>
+<div class="id">
+    123
+</div>
+</body>
+</html>

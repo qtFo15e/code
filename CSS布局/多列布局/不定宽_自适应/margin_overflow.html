@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .left {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .right {
+            /*触发BFC*/
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="left">left</div>
+<div class="right">right</div>
+</body>
+</html>

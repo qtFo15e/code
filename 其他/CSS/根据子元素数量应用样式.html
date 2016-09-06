@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*根据元素数量应用不同的样式*/
+        /*直接理解为  4个以上，6个以下*/
+        li:first-child:nth-last-child( n + 4 ):nth-last-child( -n + 6 ),
+        li:first-child:nth-last-child( n + 4 ):nth-last-child( -n + 6 ) ~ li {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+</ul>
+</body>
+</html>

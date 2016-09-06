@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /*如果外层元素为button元素的话， 要消除浏览器默认的背景色和边框*/
+    #abc {
+        position: relative;
+
+        padding: 10px;
+        text-decoration: none;
+    }
+
+    #abc:before {
+        /*继承伪元素的大小和位置*/
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        /*修正层叠顺序*/
+        z-index: -1;
+
+        content: "";
+        /*skewX:沿X轴倾斜*/
+        /*角度的正负:逆时针为正*/
+        transform: skewX( -45deg );
+        background-color: #00AA88;
+    }
+</style>
+<body>
+
+<a id="abc" href="#">
+    123
+</a>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent {
+            position: relative;
+        }
+
+        .child {
+            position: absolute;
+            top :50%;
+            /*上移自身的50%*/
+            /*translate的百分比值是根据元素自身大小取值的，恰恰解决了CSS难以获取自身大小的缺陷*/
+            transform: translateY( -50% );
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="child">123</div>
+</div>
+</body>
+</html>

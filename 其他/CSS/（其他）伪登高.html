@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper {
+            /*剪切超出.right高度的部分*/
+            overflow: hidden;
+        }
+
+        .left {
+            float: left;
+
+            background-color: #00AA88;
+            padding-bottom: 9999px;
+            /*负margin只会将后续元素拉上来，造成覆盖的效果， 但不会改变padding的大小和边框的位置*/
+            margin-bottom: -9999px;
+        }
+        .right {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="left">456</div>
+    <div class="right">
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+    </div>
+</div>
+<footer>qwe</footer>
+</body>
+</html>

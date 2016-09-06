@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+
+            background-color: rgba( 0,0,0,.3 );
+        }
+
+        .lightbox {
+            /*提高层叠顺序*/
+            position: absolute;
+            z-index: 2;
+
+            width: 100px;
+            height: 100px;
+            background-color: #00AA88;
+        }
+    </style>
+</head>
+<body>
+<div style="background-color: #00AA88;">dasdasdasda</div>
+
+<div class="overlay">
+</div>
+
+<div class="lightbox">123</div>
+
+</body>
+</html>

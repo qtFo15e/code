@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .parentFix {
+            margin-left: -20px;
+        }
+        .parent {
+            display: table;
+            table-layout: fixed;
+
+            width: 100%;
+        }
+
+        .col {
+            display: table-cell;
+
+            padding-left: 20px;
+            /*不用设置width, 未指定宽度的单元格默，固定表格布局平分宽度*/
+        }
+    </style>
+</head>
+<body>
+<div class="parentFix">
+    <div class="parent">
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+    </div>
+</div>
+</body>
+</html>

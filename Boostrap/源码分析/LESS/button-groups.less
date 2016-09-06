@@ -1,0 +1,281 @@
+//
+// Button groups
+// --------------------------------------------------
+
+// Make the div behave like a button
+// .btn-group
+
+.btn-group,
+.btn-group-vertical {
+  //设置自身布局特性
+  //为dropdown提供定位？？？
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; // match .btn alignment given font-size hack above
+  //可能会出现嵌套用法，所以注意层级关系
+  > .btn {
+    //为dropdown提供定位
+    position: relative;
+    //消除inline-block的间隙
+    float: left;
+    // Bring the "active" button to the front
+    // dropdown???
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 2;
+    }
+  }
+}
+
+// Prevent double borders when buttons are next to each other
+.btn-group {
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: -1px;
+  }
+}
+
+// Optional: Group multiple button groups together for a toolbar
+.btn-toolbar {
+  //使用兄弟选择符，或者first的方法选择符较多， 所以使用外层offset平衡first子元素的margin
+  margin-left: -5px; // Offset the first child's margin
+  //应用全部的浮动清除， 待观察还有什么组件使用全部清除
+  // display：table , content:“0”
+  &:extend(.clearfix all);
+
+  .btn,
+  .btn-group,
+  .input-group {
+    //清除inline-block间隙。 间隙由空白符造成， 所以 间距 = 空白符 + margin
+    float: left;
+  }
+  > .btn,
+  > .btn-group,
+  > .input-group {
+    margin-left: 5px;
+  }
+}
+
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+
+// Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
+//消除右侧圆角
+//由于兄弟元素的类有两种 用选择符 + ， 比较麻烦，使用first/last:child相对而言更方便
+.btn-group > .btn:first-child {
+  //两边的元素边框不重叠，不需要使用负margin，
+  margin-left: 0;
+  &:not(:last-child):not(.dropdown-toggle) {
+    .border-right-radius(0);
+  }
+}
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .dropdown-toggle:not(:first-child) {
+  .border-left-radius(0);
+}
+
+// Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
+//并列元素的布局处理
+.btn-group > .btn-group {
+  float: left;
+}
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.btn-group > .btn-group:first-child:not(:last-child) {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-right-radius(0);
+  }
+}
+
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  .border-left-radius(0);
+}
+
+
+// On active and open, don't show outline
+// 用于dropdown下拉组件， 取消蓝色的outline
+.btn-group .dropdown-toggle:active,
+.btn-group.open .dropdown-toggle {
+  outline: 0;
+}
+
+
+// Sizing
+// Remix the default button sizing classes into new ones for easier manipulation.
+.btn-group-xs > .btn { &:extend(.btn-xs); }
+.btn-group-sm > .btn { &:extend(.btn-sm); }
+.btn-group-lg > .btn { &:extend(.btn-lg); }
+
+
+// Split button dropdowns
+// ----------------------
+
+// Give the line between buttons some depth
+// .btn + .dropdown-toggle 在一个父容器时使 .dropdown-toggle 更紧凑
+.btn-group > .btn + .dropdown-toggle {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.btn-group > .btn-lg + .dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+// The clickable button for toggling the menu
+// Remove the gradient and set the same inset shadow as the :active state
+// 应用.open和:active的阴影效果一样
+.btn-group.open .dropdown-toggle {
+  .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
+  // Show no shadow for `.btn-link` since it has no other button styles.
+  &.btn-link {
+    .box-shadow(none);
+  }
+}
+
+
+// Reposition the caret
+.btn .caret {
+  margin-left: 0;
+}
+// Carets in other button sizes
+.btn-lg .caret {
+  border-width: @caret-width-large @caret-width-large 0;
+  border-bottom-width: 0;
+}
+// Upside down carets for .dropup
+.dropup .btn-lg .caret {
+  border-width: 0 @caret-width-large @caret-width-large;
+}
+
+
+// Vertical button groups
+// ----------------------
+
+.btn-group-vertical {
+  > .btn,
+  > .btn-group,
+  > .btn-group > .btn {
+    display: block;
+    //重置float的样式
+    float: none;
+    //父元素不设置宽度， 子元素都取宽度100%，效果就是 width=max(子元素宽度)
+    //???max-width和width重复声明相同的值
+    width: 100%;
+    max-width: 100%;
+  }
+
+  // Clear floats so dropdown menus can be properly placed
+  > .btn-group {
+    &:extend(.clearfix all);
+    > .btn {
+      //重置样式
+      float: none;
+    }
+  }
+
+  > .btn + .btn,
+  > .btn + .btn-group,
+  > .btn-group + .btn,
+  > .btn-group + .btn-group {
+    margin-top: -1px;
+    //重置样式？？
+    margin-left: 0;
+  }
+}
+
+.btn-group-vertical > .btn {
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  &:first-child:not(:last-child) {
+    border-top-right-radius: @btn-border-radius-base;
+    .border-bottom-radius(0);
+  }
+  &:last-child:not(:first-child) {
+    border-bottom-left-radius: @btn-border-radius-base;
+    .border-top-radius(0);
+  }
+}
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0;
+}
+.btn-group-vertical > .btn-group:first-child:not(:last-child) {
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-bottom-radius(0);
+  }
+}
+//由于dropdown组件的HTML结构 dropdown-toggle一定不会是最后一个元素， 所以此处未选取
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  .border-top-radius(0);
+}
+
+
+// Justified button groups
+// ----------------------
+
+// table-layout :fixed 组合width: 1%, 代替自适应布局，提高性能，又有自适应布局的特性
+.btn-group-justified {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  > .btn,
+  > .btn-group {
+    //重置 .btn-group + .btn-group 的样式
+    float: none;
+    display: table-cell;
+    width: 1%;
+  }
+  //<button>元素由于浏览器原因需要外出嵌套 .btn-group
+  //由于display:table-cell的布局方式不会自动设置padding使内容居中，所以如果需要手动调整属性
+  > .btn-group .btn {
+    width: 100%;
+  }
+
+  > .btn-group .dropdown-menu {
+    //重置属性？？？
+    left: auto;
+  }
+}
+
+
+// Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
+// `display: none;` or `visibility: hidden;` as that also hides the popover（弹出框）.
+// Simply visually hiding the inputs via `opacity` would leave them clickable in
+// certain cases which is prevented by using `clip` and `pointer-events`.
+// This way, we ensure a DOM element is visible to position the popover from.
+
+// 表单元素“hide”后， 有效性设置也即不存在了
+// opacity: input仍然响应click
+// display: none;` or `visibility: hidden; 弹出框受影响
+
+// See https://github.com/twbs/bootstrap/pull/12794 and
+// https://github.com/twbs/bootstrap/pull/14559 for more information.
+
+[data-toggle="buttons"] {
+  > .btn,
+  > .btn-group > .btn {
+    input[type="radio"],
+    input[type="checkbox"] {
+      //clip属性的前置属性
+      position: absolute;
+      clip: rect(0,0,0,0);
+      //不响应鼠标事件
+      pointer-events: none;
+    }
+  }
+}
+

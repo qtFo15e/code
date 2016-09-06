@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .left {
+            float: left;
+            /*提升z轴高度*/
+            position: relative;
+
+            width: 100px;
+        }
+
+        .rightFix {
+            float: right;
+            margin-left: 100px;
+
+            width: 100%;
+        }
+
+        .right {
+            margin-left: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">left</div>
+    <div class="rightFix">
+        <div class="right">right</div>
+    </div>
+</body>
+</html>
